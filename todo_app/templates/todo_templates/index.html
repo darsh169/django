@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+
+<body>
+	<h2>Awesome Todo list</h2>
+	<form action="/addtask/" method="post">{% csrf_token %}
+		<input type="text" name="task" >
+		<input type="submit" name="" value="ADD a task here">
+	</form> 
+	<br>
+	{% for item in items %}
+	<form action="/deletetask/{{item.id}}/" method='post'>{% csrf_token %}
+		{{item.task}}
+		<input type="submit" value="Delete">
+		<br>
+	</form>
+	{% endfor%}        
+</body>
+</html>
